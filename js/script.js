@@ -34,13 +34,11 @@
     sheetID = keyParam[1];
   } else {
     var sheetUrl = keyParam ? keyParam[1] :
-        prompt("Enter Google Spreadsheet URL", 
+        prompt("Paste URL of CFP response spreadsheet",
             localStorage.getItem('sheetUrl') || '');
     localStorage.setItem('sheetUrl', sheetUrl);
     sheetID = sheetUrl.match(/\/spreadsheets\/d\/([^&]+)\//)[1];
   }
-  var spreadsheetLink = "https://docs.google.com/a/github.com/spreadsheet/ccc?key=" + sheetID;
-
   // restore previous votes into the current vote form
   function loadValues() {
     var votes = loadVotes();
@@ -102,7 +100,7 @@
 
   window.addEventListener('keydown', function(e) {
     var key = String.fromCharCode(e.keyCode);
-    if (key) {
+    if (!isNaN(Number(key))) {
       $('#vote_' + key).click();
     }
   })
