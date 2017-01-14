@@ -69,7 +69,7 @@
     $('body').css({ opacity: 0.5 });
     setTimeout(successCallback, 150);
     exportData(e);
-    if (document.querySelector('#speed_mode').checked) {
+    if (document.querySelector('#speed_mode').checked && vote.vote) {
       setTimeout(function() {
         document.querySelector('.pagination-next-fullTable').click();
         window.scrollTo(0,0);
@@ -99,6 +99,9 @@
   })
 
   window.addEventListener('keydown', function(e) {
+    if (e.target.tagName == 'TEXTAREA') {
+      return;
+    }
     var key = String.fromCharCode(e.keyCode);
     if (!isNaN(Number(key))) {
       $('#vote_' + key).click();
