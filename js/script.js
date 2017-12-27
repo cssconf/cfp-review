@@ -15,16 +15,15 @@
   // ---
 
   // loading/storing votes
-  var ls_key = 'jseu-voting';
   function loadVotes() {
-    if(!window.localStorage.getObject(ls_key)) {
-      window.localStorage.setObject(ls_key, []);
+    if(!window.localStorage.getObject(sheetID)) {
+      window.localStorage.setObject(sheetID, []);
     }
-    return window.localStorage.getObject(ls_key);
+    return window.localStorage.getObject(sheetID);
   }
 
   function storeVotes(votes) {
-    window.localStorage.setObject(ls_key, votes);
+    window.localStorage.setObject(sheetID, votes);
   }
   // ---
 
@@ -53,7 +52,16 @@
   }
 
   function persistVote (e) {
-    var vote = parseVote(($('#voter').serialize()));
+
+    var form = $('#voter')[0];
+    var voteRadio = form.querySelector(':checked');
+    var vote = {
+      sheetRowNumber: form.sheetRowNumber.value,
+      id: form.id.value,
+      comment: form.comment.value.replace(/,/g, ';'),
+      vote: voteRadio ? voteRadio.value : '',
+    };
+    console.log(vote);
     var votes = loadVotes();
 
     votes[vote.sheetRowNumber] = {
@@ -81,9 +89,15 @@
   function showInfo(data) {
     totalRows = data.length;
     data = data.map(function (proposal) {
-      proposal.summary = proposal["presentationsummarytobeusedintheprogram"];
-      proposal.extra = proposal["whatelsedoyouwanttotellusaboutthetalk"];
+      proposal.summary =
+          proposal["presentationsummarytobeusedintheprogram"] ||
+          proposal["summary"];
+      proposal.extra =
+          proposal["whatelsedoyouwanttotellusaboutthetalk"] ||
+          proposal["isthereanythingelseyoudlikeustoknowaboutyourtalk"];
+      proposal.topicofpresentation = proposal.topicofpresentation || proposal.topic;
       proposal.sheetRowNumber = proposal.rowNumber + 1;
+      console.log(proposal);
       return proposal;
     })
     var tableOptions = {"data": data
@@ -132,7 +146,7 @@
       var k_v = kv.split('=');
       var key = k_v[0];
       var value = k_v[1];
-      if(key != 'comment') {
+      if(key != 'comment' && key != 'id') {
         value = parseInt(value, 10);
       }
       vote[k_v[0]] = value;
