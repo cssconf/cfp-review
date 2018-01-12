@@ -61,7 +61,6 @@
       comment: form.comment.value.replace(/,/g, ';'),
       vote: voteRadio ? voteRadio.value : '',
     };
-    console.log(vote);
     var votes = loadVotes();
 
     votes[vote.sheetRowNumber] = {
@@ -97,7 +96,6 @@
           proposal["isthereanythingelseyoudlikeustoknowaboutyourtalk"];
       proposal.topicofpresentation = proposal.topicofpresentation || proposal.topic;
       proposal.sheetRowNumber = proposal.rowNumber + 1;
-      console.log(proposal);
       return proposal;
     })
     var tableOptions = {"data": data
