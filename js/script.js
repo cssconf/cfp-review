@@ -107,7 +107,12 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    Tabletop.init( { key: sheetID, callback: showInfo, simpleSheet: true } )
+    Tabletop.init({
+      key: sheetID,
+      callback: showInfo,
+      simpleSheet: true,
+      wanted: ["Form Responses 1"]
+    })
   })
 
   window.addEventListener('keydown', function(e) {
