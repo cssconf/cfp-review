@@ -12,8 +12,6 @@ body {font-family: Libre Baskerville, Baskerville, Georgia, serif; font-size: 14
 h1, h2, h3, h4, h5, h6 {font-family: Helvetica, Arial, sans-serif;}
 h2 {margin-top: 40px;}
 
-img {width: 100%;}
-
 p a, a {color: #333; text-decoration: none; padding-bottom: 0px; border-bottom: 2px #e10079 solid;}
 p a:visted {color: #ff00ff;}
 a:hover {color: #47CCFC;}
@@ -73,4 +71,22 @@ input:checked + span { background-color: yellow; }
 
 #export:focus {
   opacity: 1;
+}
+
+.stat {
+  display: inline-block;
+  width: 50px;
+  height: 16px;
+  margin-right: 5px;
+  background-color: #43cbfd;
+  line-height: initial;
+}
+
+.stat span {
+  background-color: #0f5e7b;
+  display: inline-block;
+  width: 0px;
+  height: 16px;
+  margin-right: 5px;
+  line-height: initial;
 }

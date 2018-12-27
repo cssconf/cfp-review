@@ -82,6 +82,9 @@
         window.scrollTo(0,0);
       });
     }
+    setTimeout(function() {
+      displayStats(votes);
+    })
   }
 
   var totalRows; // ugh global!
@@ -139,6 +142,27 @@
       }
     }
     $('#export').val(csv).show();
+  }
+
+  function displayStats(votes) {
+    const stats = {};
+    let total = 0;
+    for (let v of Object.values(votes)) {
+      if (!v) {
+        continue;
+      }
+      if (!stats[v.vote]) {
+        stats[v.vote] = 0;
+      }
+      stats[v.vote]++;
+      total++;
+    }
+    for (let vote of Object.keys(stats)) {
+      const count = stats[vote];
+      const percent = Math.round((count / total * 100) / 2 /* to 50 pixels*/);
+      console.log(vote, count, percent);
+      document.querySelector('#s' + vote + ' span').style.width = percent  +  "px"
+    }
   }
 
   // helper
