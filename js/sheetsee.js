@@ -25315,9 +25315,10 @@ function  setPreNext(targetDiv, currentPage, totalPages, data, pagination) {
   var tableId = targetDiv.slice(1)
   var prevPage = currentPage - 1
   var nextPage = currentPage + 1
-  $(targetDiv).append("<div id='Pagination' pageno='" + currentPage + "'" + "class='table-pagination'>Page "
-    + currentPage + " of " + totalPages + " <a class='pagination-pre-" + tableId + "' href='#page" + prevPage + "'>Previous</a>" +
-    " <a class='pagination-next-" + tableId + "' href='#page" + nextPage + "'>Next</a></p></div>" )
+  $('#pagination-container').append("<div id='Pagination' pageno='" + currentPage + "'" + "class='table-pagination'>" +
+  "<a class='pagination-pre-" + tableId + "' href='#page" + prevPage + "'>« Previous</a>"
+  + "<div class='pagination-counter'>" + currentPage + " of " + totalPages + "</div>"
+  + " <a class='pagination-next-" + tableId + "' href='#page" + nextPage + "'>Next »</a></p></div>" )
   $(".no-pag").removeClass("no-pag");
   if (nextPage > totalPages) $(".pagination-next-" + tableId).addClass("no-pag")
   if (prevPage === 0) $(".pagination-pre-" + tableId).addClass("no-pag")
