@@ -1,92 +1,284 @@
-.container {max-width: 900px; margin: 0 auto; overflow: auto;}
+:root {
+  --color-brand: #ff5743;
+  --color-text: #111111;
+}
 
-h3 {padding-top: 18px;}
-h1 {font-size: 1.2em;}
+/* apply a natural box layout model to all elements, but allowing components to change */
 
-ul, ol {text-indent: 0; margin: 0; padding-left: 20px;}
-ul li {padding-bottom: 6px; line-height: 22px;}
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.container {
+  max-width: 42rem;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+@media screen and (min-width: 64rem) {
+  .container {
+    max-width: 90rem;
+  }
+}
+
+h1 {
+  font-size: 1.2em;
+}
+
+h3 {
+  padding-top: 1.5rem;
+}
+
+ul, ol {
+  text-indent: 0;
+  margin: 0;
+  padding-left: 20px;
+}
+
+ul li {
+  padding-bottom: 6px;
+  line-height: 22px;
+}
 
 /* older css */
 
-body {font-family: Libre Baskerville, Baskerville, Georgia, serif; font-size: 14px; background: #fff; color: #333;  border: 10px #e10079 solid; margin: 0px; padding: 20px 20px 100px 20px; }
-h1, h2, h3, h4, h5, h6 {font-family: Helvetica, Arial, sans-serif;}
-h2 {margin-top: 40px;}
+body {
+  min-height: 100vh;
+  font-family: "GT Walsheim Pro", "GT Walsheim", sans-serif;
+  font-size: 1rem;
+  background-color: #fff;
+  color: var(--color-text);
+  border: 10px var(--color-brand) solid;
+  margin: 0;
+  padding: 1rem;
+}
 
-p a, a {color: #333; text-decoration: none; padding-bottom: 0px; border-bottom: 2px #e10079 solid;}
-p a:visted {color: #ff00ff;}
-a:hover {color: #47CCFC;}
-a:active {color: #47CCFC;}
-/*a:visited {color: #333;}*/
-small {padding: 10px 0px;}
-p, ol {line-height: 24px;}
+@media screen and (min-width: 40rem) {
+  body {
+    font-size: 1.25rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+@media screen and (min-width: 64rem) {
+  body {
+    font-size: 1.5rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+p a, a {
+  color: #333;
+  text-decoration: none;
+  padding-bottom: 0;
+  border-bottom: 2px #ff5743 solid;
+}
+
+p a:visted {
+  color: var(--color-brand);
+}
+
+a:hover {
+  color: #2176ff;
+}
+
+a:active {
+  color: #2176ff;
+}
+
+small {
+  padding: 10px 0;
+}
+
+p, ol {
+  line-height: 1.666;
+}
 
 /* funsies */
-::selection {background: #44FFB4;}
-::-moz-selection {background: #44FFB4;}
+
+::selection {
+  background: #65cde5;
+}
+
+::-moz-selection {
+  background: #65cde5;
+}
 
 /* Map Popup Style */
-.leaflet-popup-content h2 {margin-bottom: 4px; margin-top: auto;}
 
-#Pagination {border-top: 1px solid #efefef; display: block; text-align: right;}
-#Pagination a {cursor: hand; display: inline-block; padding: 0.8em;}
-.no-pag {color: #acacac; border.color: transparent;}
-.no-pag:hover {color: #acacac;}
-.photo {display: inline-block; width: 100px;}
-.summary { white-space: pre-wrap; }
-.extra { white-space: pre-wrap; color: #999 }
-.loading .content { display: none; }
-.loading-indicator { display: none; }
-.loading .loading-indicator { display: block; }
-label { display: block; cursor: pointer; line-height: 3em; }
-
-div.column {
-  display: inline-block;
-  cursor: pointer;
-  line-height: 3em;
-  width: 49%;
-  box-sizing: border-box;
-  min-width: 290px;
+.leaflet-popup-content h2 {
+  margin-bottom: 4px;
+  margin-top: auto;
 }
 
-label:hover, label:focus { background-color: yellow; }
-.rank { display: inline-block; margin: 0 .3em; width: 1em; padding: 0 0.25em; text-align: center; }
-textarea { font-size: 1.2em; line-height: 1.5em; width: 100%; min-height: 3em; box-sizing: border-box; }
-.note { color: #999; clear: both; }
-input:checked + span { background-color: yellow; }
+#Pagination {
+  padding-top: 0.5rem;
+  border-top: 1px solid #fcd9e3;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+#Pagination a {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: .025em;
+}
+
+.pagination-counter {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.no-pag {
+  color: #acacac;
+  border.color: transparent;
+}
+
+.no-pag:hover {
+  color: #acacac;
+}
+
+.photo {
+  display: inline-block;
+  width: 100px;
+}
+
+.summary {
+  white-space: pre-wrap;
+}
+
+.extra {
+  font-size: 1rem;
+  white-space: pre-wrap;
+  color: #999
+}
+
+.loading .content {
+  display: none;
+}
+
+.loading-indicator {
+  display: none;
+}
+
+.loading .loading-indicator {
+  display: block;
+}
+
+.right-side label {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: .5rem 0;
+}
+
+.right-side label:hover,
+.right-side label:focus {
+  background-color: #fcd9e3;
+  box-shadow: 0 0 1rem rgba(0,0,0,.1);
+}
+
+.rank {
+  padding: 0 .4em;
+  width: 3ch;
+  text-align: center;
+}
+.right-side label strong {
+  white-space: nowrap;
+}
+
+textarea {
+  font-size: .875rem;
+  line-height: 1.5em;
+  width: 100%;
+  min-height: 4em;
+  max-height: 10em;
+  font-family: "GT Walsheim Pro", "GT Walsheim", sans-serif;
+  border: 1px solid #fcd9e3;
+  padding: .5rem;
+}
+
+.speedmode {
+  font-size: 1rem;
+}
+
+.note {
+  color: #999;
+  clear: both;
+  font-size: .75rem;
+  visibility: hidden;
+}
+
+input:checked+span {
+  background-color: #fcd9e3;
+}
 
 .left-side {
-  float: left;
-  width: 580px;
-  padding-right: 20px;
+  max-width: 32em;
+  font-family: Libre Baskerville, Baskerville, Georgia, serif;
 }
 
-.right-side {
-  float: left;
-  width: 300px;
+@media screen and (min-width: 64rem) {
+  .grid-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .right-side {
+    padding-left: 6rem;
+  }
 }
 
-#export {
-  opacity: 0.1;
+.export-container {
+  opacity: 0.15;
 }
 
-#export:focus {
+.export-container label {
+  opacity: 0;
+}
+
+.export-container:hover,
+.export-container:focus {
   opacity: 1;
 }
 
+.export-container:hover label,
+.export-container:focus label {
+  opacity: 1;
+}
+
+
 .stat {
   display: inline-block;
+  position: relative;
   width: 50px;
-  height: 16px;
-  margin-right: 5px;
-  background-color: #43cbfd;
+  height: 1rem;
+  margin-right: .5rem;
+  background-color: #fcd9e3;
   line-height: initial;
 }
 
 .stat span {
-  background-color: #0f5e7b;
+  background-color: #f29fc4;
   display: inline-block;
-  width: 0px;
-  height: 16px;
-  margin-right: 5px;
+  position: absolute;
+  width: 0;
+  height: 1rem;
+  margin-right: .5rem;
   line-height: initial;
 }

@@ -1,7 +1,7 @@
 cfp-review
 ==========
 
-Run under a webserver, the easiest ona  Mac is:
+Run under a webserver, the easiest on a  Mac is:
 
 ```sh
 python -m SimpleHTTPServer

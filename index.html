@@ -14,8 +14,13 @@
   <div class="container content">
     <div id="fullTable"></div>
     <div id="footer">
-    <p><input type="checkbox" checked id="speed_mode"> Speed mode (Next on vote)</p>
-    <textarea rows="20" cols="20" style="display:none;" id="export"></textarea>
+      <p class="speedmode">
+        <label><input type="checkbox" checked id="speed_mode"> Speed mode (Next on vote)</label>
+      </p>
+      <div class="export-container">
+        <label for="#export" >When done, copy this and email to contact@cssconf.eu:</label>
+        <textarea rows="20" cols="20" style="display:none;" id="export"></textarea>
+      </div>
     </div>
   </div>
   <div class="container loading-indicator">
@@ -23,7 +28,7 @@
   </div>
 
 <script id="fullTable" type="text/html">
-  <div>
+  <div class="grid-container">
   {{#rows}}
   <div class="left-side">
     <h1>{{topicofpresentation}}</h1>
@@ -34,27 +39,24 @@
     <form id="voter">
       <input type="hidden" id="sheetRowNumber" value="{{sheetRowNumber}}" name="sheetRowNumber">
       <input type="hidden" id="id" value="{{timestamp}}" name="id">
-      <div class="column">
-        <label><span class="stat" id="s2"><span></span></span><input type="radio" name="vote" id="vote_2" value="2"><span class="rank">2</span> - <strong>Downvote</strong></label>
-        <label><span class="stat" id="s5"><span></span></span><input type="radio" name="vote" id="vote_5" value="5"><span class="rank">5</span> - Abstain</label>
+      <div>
+        <label><span class="stat" id="s0"><span></span></span><input type="radio" name="vote" id="vote_0" value="0"><span class="rank">0</span> <strong>❌ Veto</strong></label>
+        <label><span class="stat" id="s2"><span></span></span><input type="radio" name="vote" id="vote_2" value="2"><span class="rank">2</span> <strong>👎 Downvote</strong></label>
+        <label><span class="stat" id="s5"><span></span></span><input type="radio" name="vote" id="vote_5" value="5"><span class="rank">5</span> <strong>🤷‍♀️ So-So</strong></label>
+        <label><span class="stat" id="s7"><span></span></span><input type="radio" name="vote" id="vote_7" value="7"><span class="rank">7</span> <strong>👍 Upvote</strong></label>
+        <label><span class="stat" id="s9"><span></span></span><input type="radio" name="vote" id="vote_9" value="9"><span class="rank">9</span> <strong>🌟 Super Excited</strong></label>
+        <label><span class="stat" id="s10"><span></span></span><input type="radio" name="vote" id="vote_10" value="10"><span class="rank">10</span> <strong>😍 Total Must Have</strong></label>
       </div>
       <div class="column">
-        <label><span class="stat" id="s7"><span></span></span><input type="radio" name="vote" id="vote_7" value="7"><span class="rank">7</span> - <strong>Upvote</strong></label>
-        <label><span class="stat" id="s9"><span></span></span><input type="radio" name="vote" id="vote_9" value="9"><span class="rank">9</span> - <strong>Super</strong> excited</label>
-        <label><span class="stat" id="s10"><span></span></span><input type="radio" name="vote" id="vote_10" value="10"><span class="rank">10</span> - <strong>Total must have</strong></label>
-      </div>
-      <div class="column">
-        <label><span class="stat" id="s0"><span></span></span><input type="radio" name="vote" id="vote_0" value="0"><span class="rank">0</span> - <strong>Veto</strong></label>
-      </div>
-      <div class="column">
-        <label><input type="radio" name="vote" id="vote_" value=""><span class="rank">-</span> <strong>Clear</strong></label>
+        <label><input type="radio" name="vote" id="vote_" value=""><span class="rank"></span> <strong>🚽 Clear</strong></label>
       </div>
       <p>
         <textarea id="comment" name="comment" placeholder="Remarks"></textarea>
       </p>
     </form>
-    </div>
     <p class="note"><span>(Row {{sheetRowNumber}} in sheet)</span></p>
+    <div id="pagination-container"></div>
+  </div>
 
   {{/rows}}
   </div>
