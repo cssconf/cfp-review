@@ -91,13 +91,9 @@
   function showInfo(data) {
     totalRows = data.length;
     data = data.map(function (proposal) {
-      proposal.summary =
-          proposal["presentationsummarytobeusedintheprogram"] ||
-          proposal["summary"];
-      proposal.extra =
-          proposal["whatelsedoyouwanttotellusaboutthetalk"] ||
-          proposal["isthereanythingelseyoudlikeustoknowaboutyourtalk"];
-      proposal.topicofpresentation = proposal.topicofpresentation || proposal.topic;
+      proposal.summary = proposal["about"];
+      proposal.extra = proposal["motivationgoals"];
+      proposal.topicofpresentation = "";
       proposal.sheetRowNumber = proposal.rowNumber + 1;
       return proposal;
     })
